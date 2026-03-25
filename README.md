@@ -70,3 +70,4 @@ npm run preview
 - The admin page uses client-side status updates through Supabase.
 - For stricter production security, the next step is to protect admin updates with Supabase Auth and role-based RLS policies.
 # jitendrahairsalon
+# jitendrahairsalon

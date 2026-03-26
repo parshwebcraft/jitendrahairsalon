@@ -13,8 +13,8 @@ function TokenPage() {
   const { tokenId } = useParams();
   const location = useLocation();
   const stateToken = location.state?.token;
-  const { token, loading } = useToken(tokenId);
-  const { queue, loading: queueLoading } = useQueue();
+  const { token, loading, error } = useToken(tokenId);
+  const { queue, loading: queueLoading, error: queueError } = useQueue();
   const activeToken = token ?? stateToken;
   const waitMinutes = estimateWaitMinutes(queue, activeToken);
 
@@ -26,6 +26,14 @@ function TokenPage() {
             <LoaderCircle className="animate-spin text-gold-500" />
             Loading your token...
           </div>
+        </div>
+      ) : error ? (
+        <div className="mx-auto flex max-w-xl flex-col items-center rounded-[32px] border border-rose-200 bg-rose-50 p-10 text-center shadow-glow">
+          <h1 className="font-display text-4xl text-slate-900">Unable to load token</h1>
+          <p className="mt-4 text-rose-700">{error}</p>
+          <Link to="/book" className="mt-8 rounded-full bg-gold-500 px-6 py-3 font-semibold text-white">
+            Try Booking Again
+          </Link>
         </div>
       ) : activeToken ? (
         <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
@@ -75,7 +83,7 @@ function TokenPage() {
               description="You can safely wait nearby and walk in at the right moment."
             />
             <div className="mt-8">
-              <QueueList queue={queue} loading={queueLoading} emptyMessage="The chair is open now. You can head to the salon." />
+              <QueueList queue={queue} loading={queueLoading} error={queueError} emptyMessage="The chair is open now. You can head to the salon." />
             </div>
           </div>
         </div>

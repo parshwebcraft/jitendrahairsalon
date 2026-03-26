@@ -16,9 +16,17 @@ function QueueSkeleton() {
   );
 }
 
-function QueueList({ queue, loading, emptyMessage = 'Queue is clear right now.' }) {
+function QueueList({ queue, loading, error = '', emptyMessage = 'Queue is clear right now.' }) {
   if (loading) {
     return <QueueSkeleton />;
+  }
+
+  if (error) {
+    return (
+      <div className="rounded-[28px] border border-rose-200 bg-rose-50 p-8 text-center text-rose-700">
+        {error}
+      </div>
+    );
   }
 
   if (!queue.length) {

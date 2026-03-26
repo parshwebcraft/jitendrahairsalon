@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import toast from 'react-hot-toast';
 import ActionButton from './ActionButton';
 import { SERVICES } from '../lib/constants';
+import { getFriendlyErrorMessage } from '../lib/errors';
 import { supabase } from '../lib/supabase';
 
 const initialValues = {
@@ -14,10 +15,12 @@ const initialValues = {
 function BookingForm({ onBooked }) {
   const [values, setValues] = useState(initialValues);
   const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   async function handleSubmit(event) {
     event.preventDefault();
     setSubmitting(true);
+    setSubmitError('');
 
     const payload = {
       customer_name: values.name.trim(),
@@ -28,7 +31,9 @@ function BookingForm({ onBooked }) {
     const { data, error } = await supabase.rpc('create_token', payload);
 
     if (error || !data?.[0]) {
-      toast.error(error?.message ?? 'Unable to create token right now.');
+      const friendlyError = getFriendlyErrorMessage(error, 'Unable to create token right now.');
+      setSubmitError(friendlyError);
+      toast.error(friendlyError);
       setSubmitting(false);
       return;
     }
@@ -93,6 +98,12 @@ function BookingForm({ onBooked }) {
         >
           {submitting ? 'Booking your turn...' : 'Book Your Turn'}
         </ActionButton>
+
+        {submitError ? (
+          <div className="rounded-2xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-700">
+            {submitError}
+          </div>
+        ) : null}
       </div>
     </motion.form>
   );

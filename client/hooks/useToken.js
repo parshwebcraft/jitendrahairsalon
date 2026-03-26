@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { getFriendlyErrorMessage } from '../lib/errors';
 import { supabase } from '../lib/supabase';
 
 export function useToken(tokenId) {
@@ -25,8 +26,9 @@ export function useToken(tokenId) {
       }
 
       if (queryError) {
-        setError(queryError.message);
+        setError(getFriendlyErrorMessage(queryError, 'Unable to load this token right now.'));
       } else {
+        setError('');
         setToken(data);
       }
 

@@ -8,7 +8,7 @@ import { pageTransition, pageVariants } from '../animations/pageVariants';
 
 function BookingPage() {
   const navigate = useNavigate();
-  const { queue, loading } = useQueue();
+  const { queue, loading, error } = useQueue();
 
   function handleBooked(token) {
     navigate(`/token/${token.id}`, { state: { token } });
@@ -41,7 +41,7 @@ function BookingPage() {
           description="This helps customers decide the best time to visit and reduces congestion at the salon entrance."
         />
         <div className="mt-8">
-          <QueueList queue={queue} loading={loading} />
+          <QueueList queue={queue} loading={loading} error={error} />
         </div>
       </div>
     </motion.div>

@@ -11,7 +11,7 @@ import { useQueue } from '../hooks/useQueue';
 import { pageTransition, pageVariants } from '../animations/pageVariants';
 
 function HomePage() {
-  const { queue, loading } = useQueue();
+  const { queue, loading, error } = useQueue();
   const stats = getQueueStats(queue);
 
   return (
@@ -88,7 +88,7 @@ function HomePage() {
           title="See the salon queue before you arrive"
           description="The queue updates in real time as soon as someone books, starts service, or finishes. Local users get a simple view, while the salon team gets control over the flow."
         />
-        <QueueList queue={queue} loading={loading} emptyMessage="No active customers right now. Walk in or book the first token." />
+        <QueueList queue={queue} loading={loading} error={error} emptyMessage="No active customers right now. Walk in or book the first token." />
       </section>
     </motion.div>
   );

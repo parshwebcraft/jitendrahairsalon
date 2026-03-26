@@ -15,7 +15,7 @@ const ADMIN_SESSION_KEY = 'jitendra_admin_unlocked';
 function AdminPage() {
   const [password, setPassword] = useState('');
   const [unlocked, setUnlocked] = useState(false);
-  const { queue, loading } = useQueue();
+  const { queue, loading, error } = useQueue();
   const stats = getQueueStats(queue);
 
   useEffect(() => {
@@ -106,7 +106,13 @@ function AdminPage() {
       </div>
 
       <div className="mt-10">
-        <AdminQueueTable queue={queue} loading={loading} />
+        {error ? (
+          <div className="rounded-[30px] border border-rose-200 bg-rose-50 p-6 text-rose-700 shadow-glow">
+            {error}
+          </div>
+        ) : (
+          <AdminQueueTable queue={queue} loading={loading} />
+        )}
       </div>
     </motion.div>
   );

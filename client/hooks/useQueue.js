@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { getFriendlyErrorMessage } from '../lib/errors';
 import { supabase } from '../lib/supabase';
 
 const BASE_QUERY = `
@@ -31,8 +32,9 @@ export function useQueue() {
       }
 
       if (queryError) {
-        setError(queryError.message);
+        setError(getFriendlyErrorMessage(queryError, 'Unable to load the live queue right now.'));
       } else {
+        setError('');
         setQueue(data ?? []);
       }
 

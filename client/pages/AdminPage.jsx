@@ -9,7 +9,7 @@ import { useQueue } from '../hooks/useQueue';
 import { getQueueStats } from '../lib/utils';
 import { pageTransition, pageVariants } from '../animations/pageVariants';
 
-const ADMIN_PASSWORD = 'jitendra-admin-2026';
+const ADMIN_PASSWORD = 'admin123';
 const ADMIN_SESSION_KEY = 'jitendra_admin_unlocked';
 
 function AdminPage() {

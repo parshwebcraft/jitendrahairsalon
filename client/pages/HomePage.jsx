@@ -51,7 +51,7 @@ function HomePage() {
           <div className="mt-10 flex flex-wrap gap-6 text-sm text-slate-600">
             <span className="inline-flex items-center gap-2">
               <MapPin size={16} className="text-gold-500" />
-              Sector 3, Udaipur
+              Sector 3, Udaipur 313001
             </span>
             <span className="inline-flex items-center gap-2">
               <Clock3 size={16} className="text-gold-500" />

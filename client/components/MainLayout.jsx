@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import Header from './Header';
+import Footer from './Footer';
 
 function MainLayout() {
   return (
@@ -10,6 +11,7 @@ function MainLayout() {
       <main className="mx-auto flex min-h-screen w-full max-w-7xl flex-col px-4 pb-10 pt-24 sm:px-6 lg:px-8">
         <Outlet />
       </main>
+      <Footer />
     </div>
   );
 }

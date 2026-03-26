@@ -74,12 +74,12 @@ begin
 
   select coalesce(
     max(
-      nullif(regexp_replace(token_number, '[^0-9]', '', 'g'), '')::integer
+      nullif(regexp_replace(t.token_number, '[^0-9]', '', 'g'), '')::integer
     ),
     0
   ) + 1
   into next_number
-  from public.tokens;
+  from public.tokens t;
 
   insert into public.tokens (name, phone, service, status, token_number)
   values (

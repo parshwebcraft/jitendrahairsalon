@@ -25,7 +25,20 @@ function Footer() {
     <footer className="mt-16 border-t border-sky-100 bg-white/65 backdrop-blur-sm">
       <div className="mx-auto grid w-full max-w-7xl gap-10 px-4 py-10 sm:px-6 lg:grid-cols-3 lg:px-8">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.32em] text-gold-600">Salon Details</p>
+          <Link to="/" className="flex items-center gap-3">
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-gold-200 bg-gold-50 shadow-glow">
+              <img
+                src="/jitendra-logo.png"
+                alt="Jitendra Hair Salon logo"
+                className="h-9 w-9 object-contain"
+              />
+            </div>
+            <div>
+              <p className="font-display text-2xl leading-none text-slate-900">Jitendra Hair Salon</p>
+              <p className="mt-1 text-xs uppercase tracking-[0.28em] text-slate-500">Sector 3, Udaipur</p>
+            </div>
+          </Link>
+          <p className="mt-6 text-xs font-semibold uppercase tracking-[0.32em] text-gold-600">Salon Details</p>
           <h3 className="mt-3 font-display text-3xl text-slate-900">{SALON_DETAILS.ownerName}</h3>
           <div className="mt-5 space-y-3 text-sm text-slate-600">
             <p className="inline-flex items-start gap-2">

@@ -1,4 +1,4 @@
-import { Scissors, ShieldCheck } from 'lucide-react';
+import { ShieldCheck } from 'lucide-react';
 import { Link, NavLink } from 'react-router-dom';
 import { cn } from '../lib/utils';
 
@@ -14,7 +14,11 @@ function Header() {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
         <Link to="/" className="flex items-center gap-3">
           <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-gold-200 bg-gold-50 text-gold-600 shadow-glow">
-            <Scissors size={20} />
+            <img
+              src="/jitendra-logo.png"
+              alt="Jitendra Hair Salon logo"
+              className="h-8 w-8 object-contain"
+            />
           </div>
           <div>
             <p className="font-display text-2xl leading-none text-slate-900">Jitendra Hair Salon</p>
